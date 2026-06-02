@@ -173,20 +173,15 @@ body {
   gap: 0.5rem;
 }
 
-.duck-logo-svg {
-  width: 36px;
-  height: 32px;
+.duck-logo-img {
+  height: 42px;
+  width: auto;
   filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.15));
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.nav-logo:hover .duck-logo-svg {
+.nav-logo:hover .duck-logo-img {
   transform: scale(1.15) rotate(-5deg);
-}
-
-.logo-text {
-  position: relative;
-  top: 2px;
 }
 
 .nav-links {
