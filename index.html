@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duckiess - Cute Web3 Doodle Art Project</title>
+  <meta name="description"
+    content="Join the pond! Duckiess is a whimsical, doodle-style Web3 project featuring cute chubby yellow ducks, stars, and campfires. Join our whitelist now!">
+
+  <!-- Google Fonts for Hand-drawn and Whimsical Vibe -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Patrick+Hand&display=swap"
+    rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Floating Sparkling Stars & Campfire Spark CSS Elements overlaying the background -->
+  <div class="sky-sparks" id="skySparks"></div>
+
+  <!-- Hand-drawn Navigation Bar -->
+  <header class="doodle-header">
+    <nav class="doodle-nav">
+      <div class="nav-logo">
+        <a href="#" class="logo-link">
+          <span class="logo-text">Duckiess</span>
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li class="nav-twitter-li">
+          <a href="https://x.com/Duckiess_on_Eth" target="_blank" class="nav-twitter-link" title="Follow us on Twitter">
+            <svg class="nav-twitter-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="hero-container">
+    <div class="hero-content">
+      <!-- Tagline above JOIN WL -->
+      <h2 class="cta-subtitle">10,000 Fat Duckiess on ETH</h2>
+
+      <!-- Main Central CTA Button -->
+      <button class="join-wl-btn" id="joinWlBtn">
+        <span class="btn-text">JOIN WL</span>
+        <svg class="btn-underline" viewBox="0 0 300 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 10,10 Q 75,18 150,10 T 290,10" fill="none" stroke="#1C1C1C" stroke-width="4"
+            stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </main>
+
+  <!-- Interactive Whitelist Steps Modal Popup (overlay) -->
+  <div class="modal-overlay" id="wlModalOverlay">
+    <div class="doodle-modal" id="wlModal">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-title-badge">
+          <h2>JOIN WL Steps</h2>
+          <!-- Hand-drawn scribbled border for the title badge -->
+          <svg class="badge-border" viewBox="0 0 220 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 5,5 Q 110,2 215,5 Q 218,25 215,45 Q 110,48 5,45 Q 2,25 5,5" fill="none" stroke="#1C1C1C"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+          <svg class="close-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <!-- Draw an uneven sketchy X -->
+            <path d="M 10,10 L 30,30 M 30,10 L 10,30" stroke="#1C1C1C" stroke-width="4" stroke-linecap="round" />
+            <!-- Cute circle backdrop -->
+            <circle cx="20" cy="20" r="16" fill="none" stroke="#1C1C1C" stroke-width="2.5" stroke-dasharray="4 2" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Content & Checklist -->
+      <div class="modal-body">
+        <p class="modal-intro">complete the steps to secure your spot on the whitelist! </p>
+
+        <div class="checklist">
+          <!-- Step 1: Follow @Duckiess_on_Eth -->
+          <div class="checklist-item" id="stepFollow">
+            <div class="custom-checkbox" id="chkFollow">
+              <svg class="checkmark-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <!-- A sketchy, scribbled checkmark -->
+                <path class="checkmark-path" d="M 4,12 L 10,18 L 20,6" fill="none" stroke="#4CAF50" stroke-width="4"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <div class="item-content">
+              <div class="item-icon-wrapper x-icon-color">
+                <!-- Stylized X Logo -->
+                <svg class="item-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+              </div>
+              <div class="item-details">
+                <span class="step-num">Step 1</span>
+                <a href="https://x.com/Duckiess_on_Eth" target="_blank" class="step-action-link" id="linkFollow">
+                  FOLLOW @Duckiess_on_Eth
+                  <span class="external-icon">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Like & RT this post -->
+          <div class="checklist-item" id="stepLikeRT">
+            <div class="custom-checkbox" id="chkLikeRT">
+              <svg class="checkmark-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="checkmark-path" d="M 4,12 L 10,18 L 20,6" fill="none" stroke="#4CAF50" stroke-width="4"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <div class="item-content">
+              <div class="item-icon-wrapper social-icons-color">
+                <!-- Cute Heart SVG -->
+                <svg class="item-icon heart-icon" viewBox="0 0 24 24" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+              </div>
+              <div class="item-details">
+                <span class="step-num">Step 2</span>
+                <a href="https://x.com/wsavas/status/2054597984105492731?s=20" target="_blank" class="step-action-link"
+                  id="linkLikeRT">
+                  LIKE & RT this post
+                  <span class="external-icon">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Enter Your Wallet -->
+          <div class="checklist-item wallet-item" id="stepWallet">
+            <div class="custom-checkbox" id="chkWallet">
+              <svg class="checkmark-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="checkmark-path" d="M 4,12 L 10,18 L 20,6" fill="none" stroke="#4CAF50" stroke-width="4"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <div class="item-content">
+              <div class="item-icon-wrapper wallet-icon-color">
+                <!-- Stylized Wallet Icon -->
+                <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
+                  <path d="M3 10h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  <circle cx="17" cy="15" r="1.5" fill="currentColor" />
+                </svg>
+              </div>
+              <div class="item-details wallet-details">
+                <div class="step-label-group">
+                  <span class="step-num">Step 3</span>
+                  <span class="step-title">ENTER YOUR WALLET</span>
+                </div>
+
+                <!-- Sketchy Custom Input -->
+                <div class="input-container">
+                  <input type="text" id="walletInput" placeholder="0x..." autocomplete="off" spellcheck="false">
+                  <!-- Sketch-style underline path -->
+                  <svg class="input-scribble-line" viewBox="0 0 280 12" preserveAspectRatio="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 5,6 Q 70,10 140,5 T 275,6" fill="none" stroke="#1C1C1C" stroke-width="3"
+                      stroke-linecap="round" />
+                  </svg>
+                  <span class="input-error" id="walletError">Invalid ETH address! Must start with 0x and be 42
+                    characters.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button inside the modal -->
+        <div class="modal-footer">
+          <button class="doodle-submit-btn disabled" id="submitBtn" disabled>
+            <span class="btn-text">SUBMIT</span>
+            <!-- Hand-drawn background fill sketch -->
+            <svg class="btn-bg-scribble" viewBox="0 0 200 50" preserveAspectRatio="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M 3,3 C 50,2 150,4 197,3 C 196,15 198,35 197,47 C 150,46 50,48 3,47 C 4,35 2,15 3,3 Z"
+                fill="none" stroke="#1C1C1C" stroke-width="3" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Success Screen inside Modal (hidden by default) -->
+      <div class="success-screen" id="successScreen">
+
+        <h3>Thank you for joining us!</h3>
+        <p class="success-msg">Your wallet has been successfully registered for the Duckiess Whitelist!</p>
+        <div class="registered-wallet-box">
+          <span class="label">REGISTERED WALLET:</span>
+          <span class="value" id="registeredWalletVal">0x00...0000</span>
+        </div>
+        <button class="doodle-btn close-success-btn" id="closeSuccessBtn">GoBack!</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Interactive Toast Notification -->
+  <div class="toast-container" id="toast">
+    <span id="toastMsg">Step completed!</span>
+  </div>
+
+
+
+  <!-- Supabase JS Client Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Main JavaScript File -->
+  <script src="app.js?v=fresh-ducky-123"></script>
+</body>
+
+</html>

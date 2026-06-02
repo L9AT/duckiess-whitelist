@@ -1,0 +1,10 @@
+# Local history / IDE configs
+.idea/
+.vscode/
+.gemini/
+*.log
+.system_generated/
+
+# OS files
+Thumbs.db
+.DS_Store
