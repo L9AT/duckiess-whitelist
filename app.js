@@ -82,6 +82,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadDynamicTweetLink();
 
+  // Play quack sound when clicking the logo
+  const logoLink = document.querySelector('.logo-link');
+  if (logoLink) {
+    const quackAudio = new Audio('asset/quack.mp3');
+    logoLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      quackAudio.currentTime = 0;
+      quackAudio.play().catch(err => {
+        console.warn("Could not play quack sound (interaction required):", err);
+      });
+      
+      const logoImg = logoLink.querySelector('.duck-logo-img');
+      if (logoImg) {
+        logoImg.style.transform = 'scale(1.3) rotate(-15deg)';
+        setTimeout(() => {
+          logoImg.style.transform = '';
+        }, 300);
+      }
+    });
+  }
+
 
   /* ==========================================================================
      1. BACKGROUND CAMPFIRE EMBERS SPAWNING
