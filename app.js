@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // State variables
   let isFollowed = false;
-  let isLikedRT = false;
+  let isLiked = false;
+  let isRT = false;
   let isWalletValid = false;
   let audioContext = null;
   let isCampfirePlaying = false;
@@ -34,16 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Checklist Items & Checkboxes
   const stepFollow = document.getElementById('stepFollow');
-  const stepLikeRT = document.getElementById('stepLikeRT');
+  const stepLike = document.getElementById('stepLike');
+  const stepRT = document.getElementById('stepRT');
   const stepWallet = document.getElementById('stepWallet');
 
   const linkFollow = document.getElementById('linkFollow');
-  const linkLikeRT = document.getElementById('linkLikeRT');
+  const linkLike = document.getElementById('linkLike');
+  const linkRT = document.getElementById('linkRT');
   const walletInput = document.getElementById('walletInput');
   const walletError = document.getElementById('walletError');
 
   const chkFollow = document.getElementById('chkFollow');
-  const chkLikeRT = document.getElementById('chkLikeRT');
+  const chkLike = document.getElementById('chkLike');
+  const chkRT = document.getElementById('chkRT');
   const chkWallet = document.getElementById('chkWallet');
 
   const submitBtn = document.getElementById('submitBtn');
@@ -59,28 +63,50 @@ document.addEventListener('DOMContentLoaded', () => {
   const soundOffIcon = document.getElementById('soundOffIcon');
   const skySparks = document.getElementById('skySparks');
 
-  // Fetch active tweet link dynamically from Supabase
-  async function loadDynamicTweetLink() {
+  // Fetch like link dynamically from Supabase
+  async function loadLikeLink() {
     if (!supabaseClient) return;
     try {
       const { data, error } = await supabaseClient
         .from('settings')
         .select('value')
-        .eq('key', 'tweet_link')
+        .eq('key', 'like_link')
         .maybeSingle();
 
       if (error) throw error;
 
-      if (data && data.value && linkLikeRT) {
-        linkLikeRT.href = data.value;
-        console.log("Dynamically loaded tweet link from Supabase:", data.value);
+      if (data && data.value && linkLike) {
+        linkLike.href = data.value;
+        console.log("Dynamically loaded like link from Supabase:", data.value);
       }
     } catch (err) {
-      console.warn("Could not load dynamic tweet link, using default fallback:", err);
+      console.warn("Could not load like link, using default fallback:", err);
     }
   }
 
-  loadDynamicTweetLink();
+  // Fetch RT link dynamically from Supabase
+  async function loadRTLink() {
+    if (!supabaseClient) return;
+    try {
+      const { data, error } = await supabaseClient
+        .from('settings')
+        .select('value')
+        .eq('key', 'rt_link')
+        .maybeSingle();
+
+      if (error) throw error;
+
+      if (data && data.value && linkRT) {
+        linkRT.href = data.value;
+        console.log("Dynamically loaded RT link from Supabase:", data.value);
+      }
+    } catch (err) {
+      console.warn("Could not load RT link, using default fallback:", err);
+    }
+  }
+
+  loadLikeLink();
+  loadRTLink();
 
   // Play quack sound when clicking the logo
   const logoLink = document.querySelector('.logo-link');
@@ -193,13 +219,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Function to update which step looks "currently active"
   function updateActiveStepStates() {
     stepFollow.classList.remove('active-step');
-    stepLikeRT.classList.remove('active-step');
+    stepLike.classList.remove('active-step');
+    stepRT.classList.remove('active-step');
     stepWallet.classList.remove('active-step');
 
     if (!isFollowed) {
       stepFollow.classList.add('active-step');
-    } else if (!isLikedRT) {
-      stepLikeRT.classList.add('active-step');
+    } else if (!isLiked) {
+      stepLike.classList.add('active-step');
+    } else if (!isRT) {
+      stepRT.classList.add('active-step');
     } else if (!isWalletValid) {
       stepWallet.classList.add('active-step');
     }
@@ -207,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Check if all steps are completed to enable the submit button
   function validateAllSteps() {
-    if (isFollowed && isLikedRT && isWalletValid) {
+    if (isFollowed && isLiked && isRT && isWalletValid) {
       submitBtn.classList.remove('disabled');
       submitBtn.removeAttribute('disabled');
     } else {
@@ -230,14 +259,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1500);
   });
 
-  // Step 2: Simulated Like & RT
-  linkLikeRT.addEventListener('click', (e) => {
-    showToast('Verifying Like & Retweet...');
+  // Step 2: Simulated Like
+  linkLike.addEventListener('click', (e) => {
+    showToast('Verifying Like...');
 
     setTimeout(() => {
-      isLikedRT = true;
-      stepLikeRT.classList.add('checked');
-      showToast('Step 2 Complete! Post Liked & RT\'d! ');
+      isLiked = true;
+      stepLike.classList.add('checked');
+      showToast('Step 2 Complete! Post Liked! ❤️');
+      validateAllSteps();
+    }, 1500);
+  });
+
+  // Step 3: Simulated RT
+  linkRT.addEventListener('click', (e) => {
+    showToast('Verifying Retweet...');
+
+    setTimeout(() => {
+      isRT = true;
+      stepRT.classList.add('checked');
+      showToast('Step 3 Complete! Post RT\'d! 🔁');
       validateAllSteps();
     }, 1500);
   });
@@ -282,9 +323,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  chkLikeRT.addEventListener('click', () => {
-    if (!isLikedRT) {
-      linkLikeRT.click();
+  chkLike.addEventListener('click', () => {
+    if (!isLiked) {
+      linkLike.click();
+    }
+  });
+
+  chkRT.addEventListener('click', () => {
+    if (!isRT) {
+      linkRT.click();
     }
   });
 
@@ -433,11 +480,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Reset all inputs & checkboxes for demo repeatability
     walletInput.value = "";
     isFollowed = false;
-    isLikedRT = false;
+    isLiked = false;
+    isRT = false;
     isWalletValid = false;
 
     stepFollow.classList.remove('checked');
-    stepLikeRT.classList.remove('checked');
+    stepLike.classList.remove('checked');
+    stepRT.classList.remove('checked');
     stepWallet.classList.remove('checked');
 
     validateAllSteps();
