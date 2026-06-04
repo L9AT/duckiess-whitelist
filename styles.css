@@ -1097,4 +1097,188 @@ body {
     left: 1rem;
     text-align: center;
   }
+
+  .nav-roadmap-btn {
+    font-size: 1.1rem;
+    padding: 0.25rem 0.75rem;
+  }
+
+  .roadmap-modal {
+    max-width: 98vw;
+  }
+
+  .phase-title {
+    font-size: 1.15rem !important;
+  }
 }
+
+/* --------------------------------------------------------------------------
+   ROADMAP NAV BUTTON
+   -------------------------------------------------------------------------- */
+
+.nav-roadmap-btn {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  background: var(--primary-yellow);
+  border: 3px solid var(--charcoal);
+  border-radius: 20px 8px 22px 6px / 8px 22px 6px 20px;
+  padding: 0.2rem 0.9rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0px var(--charcoal);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  letter-spacing: 0.3px;
+}
+
+.nav-roadmap-btn:hover {
+  background: var(--dark-yellow);
+  transform: translateY(-3px) rotate(-1.5deg);
+  box-shadow: 5px 5px 0px var(--charcoal);
+}
+
+.nav-roadmap-btn:active {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 0px var(--charcoal);
+}
+
+
+/* --------------------------------------------------------------------------
+   ROADMAP MODAL OVERRIDES & PHASE CARDS
+   -------------------------------------------------------------------------- */
+
+.roadmap-modal {
+  max-width: 580px;
+  overflow: hidden;
+}
+
+.roadmap-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 62vh;
+  overflow-y: auto;
+  padding-top: 6px;
+  padding-right: 6px;
+  padding-bottom: 6px;
+
+  /* Custom scrollbar to match site style */
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-yellow) var(--paper-cream);
+}
+
+.roadmap-body::-webkit-scrollbar {
+  width: 10px;
+}
+
+.roadmap-body::-webkit-scrollbar-track {
+  background: var(--paper-cream);
+  border-left: 2px solid var(--charcoal);
+  border-radius: 4px;
+}
+
+.roadmap-body::-webkit-scrollbar-thumb {
+  background-color: var(--primary-yellow);
+  border: 2px solid var(--charcoal);
+  border-radius: 8px;
+}
+
+/* Each phase card */
+.roadmap-phase {
+  background: white;
+  border: 3px solid var(--charcoal);
+  border-radius: 18px 12px 20px 14px / 12px 18px 14px 20px;
+  padding: 1rem 1.15rem;
+  box-shadow: 3px 4px 0px var(--charcoal);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.roadmap-phase:hover {
+  transform: translateY(-2px) rotate(0.3deg);
+  box-shadow: 5px 6px 0px var(--charcoal);
+}
+
+/* Phase header row: tag + title */
+.phase-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+/* Phase number badge pill */
+.phase-tag {
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.15rem 0.7rem;
+  border: 2.5px solid var(--charcoal);
+  border-radius: 30px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.3px;
+}
+
+.phase-tag--yellow {
+  background-color: var(--primary-yellow);
+  color: var(--charcoal);
+}
+
+.phase-tag--orange {
+  background-color: #FFD0A0;
+  color: var(--charcoal);
+}
+
+.phase-tag--blue {
+  background-color: var(--light-blue);
+  color: var(--charcoal);
+}
+
+.phase-tag--green {
+  background-color: #C8F0C8;
+  color: var(--charcoal);
+}
+
+/* Phase title text */
+.phase-title {
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1.2;
+}
+
+/* Bullet points */
+.phase-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.phase-list li {
+  font-family: var(--font-hand);
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.45;
+  padding-left: 1.4rem;
+  position: relative;
+}
+
+.phase-list li::before {
+  content: "🐥";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.phase-list li strong {
+  color: var(--accent-orange);
+  font-weight: 700;
+}
+

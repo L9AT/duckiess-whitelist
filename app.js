@@ -573,4 +573,47 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  /* ==========================================================================
+     8. ROADMAP MODAL
+     ========================================================================== */
+  const roadmapNavBtn = document.getElementById('roadmapNavBtn');
+  const roadmapModalOverlay = document.getElementById('roadmapModalOverlay');
+  const roadmapCloseBtn = document.getElementById('roadmapCloseBtn');
+
+  function openRoadmapModal() {
+    roadmapModalOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeRoadmapModal() {
+    roadmapModalOverlay.classList.remove('open');
+    document.body.style.overflow = 'auto';
+  }
+
+  if (roadmapNavBtn) {
+    roadmapNavBtn.addEventListener('click', openRoadmapModal);
+  }
+
+  if (roadmapCloseBtn) {
+    roadmapCloseBtn.addEventListener('click', closeRoadmapModal);
+  }
+
+  if (roadmapModalOverlay) {
+    roadmapModalOverlay.addEventListener('click', (e) => {
+      if (e.target === roadmapModalOverlay) {
+        closeRoadmapModal();
+      }
+    });
+  }
+
+  // Close roadmap modal with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (roadmapModalOverlay && roadmapModalOverlay.classList.contains('open')) {
+        closeRoadmapModal();
+      }
+    }
+  });
 });
+

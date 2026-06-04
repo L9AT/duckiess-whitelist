@@ -32,6 +32,9 @@
         </a>
       </div>
       <ul class="nav-links">
+        <li>
+          <button class="nav-roadmap-btn" id="roadmapNavBtn" title="View Roadmap">Roadmap</button>
+        </li>
         <li class="nav-twitter-li">
           <a href="https://x.com/Duckiess_on_Eth" target="_blank" class="nav-twitter-link" title="Follow us on Twitter">
             <svg class="nav-twitter-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -214,6 +217,86 @@
         <button class="doodle-btn close-success-btn" id="closeSuccessBtn">GoBack!</button>
       </div>
 
+    </div>
+  </div>
+
+  <!-- Roadmap Modal Overlay -->
+  <div class="modal-overlay" id="roadmapModalOverlay">
+    <div class="doodle-modal roadmap-modal" id="roadmapModal">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-title-badge">
+          <h2>The Duckiess Roadmap</h2>
+          <svg class="badge-border" viewBox="0 0 320 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 5,5 Q 160,2 315,5 Q 318,25 315,45 Q 160,48 5,45 Q 2,25 5,5" fill="none" stroke="#1C1C1C"
+              stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <button class="modal-close-btn" id="roadmapCloseBtn" aria-label="Close roadmap modal">
+          <svg class="close-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 10,10 L 30,30 M 30,10 L 10,30" stroke="#1C1C1C" stroke-width="4" stroke-linecap="round" />
+            <circle cx="20" cy="20" r="16" fill="none" stroke="#1C1C1C" stroke-width="2.5" stroke-dasharray="4 2" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Roadmap Phases -->
+      <div class="modal-body roadmap-body">
+
+        <!-- Phase 1 -->
+        <div class="roadmap-phase">
+          <div class="phase-header">
+            <span class="phase-tag phase-tag--yellow">Phase 1</span>
+            <h3 class="phase-title">The Heavy Migration</h3>
+          </div>
+          <ul class="phase-list">
+            <li>10,000 extremely fat Duckiess officially arrive on the Ethereum blockchain.</li>
+            <li>They are physically too heavy to fly, so they are riding scooters.</li>
+            <li>The mint goes live. No complicated phases, just round birds claiming their space.</li>
+          </ul>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="roadmap-phase">
+          <div class="phase-header">
+            <span class="phase-tag phase-tag--orange">Phase 2</span>
+            <h3 class="phase-title">Zero-Effort Utility</h3>
+          </div>
+          <ul class="phase-list">
+            <li>The Duckiess are inherently lazy. They refuse to build a complex metaverse.</li>
+            <li>They are also completely unapologetic about being too wide to fit inside staking contracts.</li>
+            <li>The only official utility is holding a flawlessly round 2D bird and aggressively tweeting 'gm' every morning.</li>
+          </ul>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="roadmap-phase">
+          <div class="phase-header">
+            <span class="phase-tag phase-tag--blue">Phase 3</span>
+            <h3 class="phase-title">The Pond (Community)</h3>
+          </div>
+          <ul class="phase-list">
+            <li>The Duckiess establish their own exclusive territory.</li>
+            <li>A community is formed for holders who appreciate pure, unbothered aesthetics over fake Web3 promises.</li>
+            <li>It is a stress-free zone. The Duckiess do not check floor prices, and neither should you.</li>
+          </ul>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="roadmap-phase">
+          <div class="phase-header">
+            <span class="phase-tag phase-tag--green">Phase 4</span>
+            <h3 class="phase-title">Eternal Chilling</h3>
+          </div>
+          <ul class="phase-list">
+            <li>The Duckiess reject the traditional Web3 grind and roadmaps.</li>
+            <li>They will simply exist on the blockchain forever, looking incredibly chubby and unbothered by market conditions.</li>
+            <li>Long-term survival through pure vibes. <strong>WAGMI.</strong></li>
+          </ul>
+        </div>
+
+      </div>
     </div>
   </div>
 
