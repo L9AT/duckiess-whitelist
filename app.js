@@ -114,12 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const quackAudio = new Audio('asset/quack.mp3');
     logoLink.addEventListener('click', (e) => {
       e.preventDefault();
-      
+
       quackAudio.currentTime = 0;
       quackAudio.play().catch(err => {
         console.warn("Could not play quack sound (interaction required):", err);
       });
-      
+
       const logoImg = logoLink.querySelector('.duck-logo-img');
       if (logoImg) {
         logoImg.style.transform = 'scale(1.3) rotate(-15deg)';
@@ -662,7 +662,43 @@ document.addEventListener('DOMContentLoaded', () => {
       if (roadmapModalOverlay && roadmapModalOverlay.classList.contains('open')) {
         closeRoadmapModal();
       }
+      if (checkerModalOverlay && checkerModalOverlay.classList.contains('open')) {
+        closeCheckerModal();
+      }
     }
   });
+
+  /* ==========================================================================
+     9. CHECKER MODAL
+     ========================================================================== */
+  const checkerNavBtn = document.getElementById('checkerNavBtn');
+  const checkerModalOverlay = document.getElementById('checkerModalOverlay');
+  const checkerCloseBtn = document.getElementById('checkerCloseBtn');
+
+  function openCheckerModal() {
+    checkerModalOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCheckerModal() {
+    checkerModalOverlay.classList.remove('open');
+    document.body.style.overflow = 'auto';
+  }
+
+  if (checkerNavBtn) {
+    checkerNavBtn.addEventListener('click', openCheckerModal);
+  }
+
+  if (checkerCloseBtn) {
+    checkerCloseBtn.addEventListener('click', closeCheckerModal);
+  }
+
+  if (checkerModalOverlay) {
+    checkerModalOverlay.addEventListener('click', (e) => {
+      if (e.target === checkerModalOverlay) {
+        closeCheckerModal();
+      }
+    });
+  }
 });
 
