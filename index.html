@@ -53,17 +53,42 @@
   <!-- Hero Section -->
   <main class="hero-container">
     <div class="hero-content">
-      <!-- Tagline above JOIN WL -->
-      <h2 class="cta-subtitle">10,000 Fat Duckiess on ETH</h2>
 
-      <!-- Main Central CTA Button -->
-      <button class="join-wl-btn" id="joinWlBtn">
-        <span class="btn-text">JOIN WL</span>
-        <svg class="btn-underline" viewBox="0 0 300 20" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 10,10 Q 75,18 150,10 T 290,10" fill="none" stroke="#1C1C1C" stroke-width="4"
-            stroke-linecap="round" />
-        </svg>
-      </button>
+      <!-- Main Central CTA Button (HIDDEN) -->
+      <div style="display:none;">
+        <button class="join-wl-btn" id="joinWlBtn">
+          <span class="btn-text">JOIN WL</span>
+          <svg class="btn-underline" viewBox="0 0 300 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 10,10 Q 75,18 150,10 T 290,10" fill="none" stroke="#1C1C1C" stroke-width="4"
+              stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- 1:1 NFT Showcase Container -->
+      <div class="nft-showcase-container" id="nftShowcase">
+        <div class="nft-frame">
+          <img src="NFT/1.png" alt="Duckiess NFT" class="nft-showcase-img" id="nftShowcaseImg">
+        </div>
+
+        <!-- Nav Controls -->
+        <div class="nft-controls">
+          <button class="nft-ctrl-btn nft-arrow-btn" id="nftPrev" title="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="nft-ctrl-btn nft-action-btn" id="nftRandom" title="Random">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+            random
+          </button>
+          <button class="nft-ctrl-btn nft-action-btn" id="nftDownload" title="Download">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            download
+          </button>
+          <button class="nft-ctrl-btn nft-arrow-btn" id="nftNext" title="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
     </div>
 
 

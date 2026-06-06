@@ -700,5 +700,108 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  /* ==========================================================================
+     10. NFT SHOWCASE — INTERACTIVE CONTROLS
+     ========================================================================== */
+  const nftImages = [
+    "NFT/1.png","NFT/2.png","NFT/3.png","NFT/4.png","NFT/5.png",
+    "NFT/6.png","NFT/7.png","NFT/8.png","NFT/9.png","NFT/16.png",
+    "NFT/17.png","NFT/18.png","NFT/19.png","NFT/20.png","NFT/21.png",
+    "NFT/22.png","NFT/23.png","NFT/24.png","NFT/31.png","NFT/32.png",
+    "NFT/33.png","NFT/34.png","NFT/35.png","NFT/36.png","NFT/37.png",
+    "NFT/38.png","NFT/39.png","NFT/46.png","NFT/47.png","NFT/48.png",
+    "NFT/49.png","NFT/50.png","NFT/53.png","NFT/54.png","NFT/61.png",
+    "NFT/62.png","NFT/63.png","NFT/64.png","NFT/65.png","NFT/66.png",
+    "NFT/67.png","NFT/68.png","NFT/69.png","NFT/76.png","NFT/77.png",
+    "NFT/78.png","NFT/79.png","NFT/80.png","NFT/81.png","NFT/82.png",
+    "NFT/83.png","NFT/84.png","NFT/91.png","NFT/92.png","NFT/93.png",
+    "NFT/94.png","NFT/95.png","NFT/96.png","NFT/97.png","NFT/98.png",
+    "NFT/99.png","NFT/106.png","NFT/107.png","NFT/108.png","NFT/109.png",
+    "NFT/110.png","NFT/111.png","NFT/112.png","NFT/113.png","NFT/114.png",
+    "NFT/image.png","NFT/Monti.png","NFT/Scoop.png","NFT/TMA.png",
+    "NFT/Untitled_Artwork.png","NFT/IMG_0406.png","NFT/IMG_0411.png"
+  ];
+
+  const nftShowcaseImg = document.getElementById('nftShowcaseImg');
+  const nftDotsEl     = document.getElementById('nftDots');
+  const nftPrevBtn    = document.getElementById('nftPrev');
+  const nftNextBtn    = document.getElementById('nftNext');
+  const nftRandomBtn  = document.getElementById('nftRandom');
+  const nftDownloadBtn= document.getElementById('nftDownload');
+
+  let nftIndex = 0;
+  let autoCycleTimer = null;
+
+  // Build dot indicators
+  function buildDots() {
+    if (!nftDotsEl) return;
+    nftDotsEl.innerHTML = '';
+    nftImages.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'nft-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `NFT ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i, true));
+      nftDotsEl.appendChild(dot);
+    });
+  }
+
+  function updateDots() {
+    if (!nftDotsEl) return;
+    nftDotsEl.querySelectorAll('.nft-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === nftIndex);
+    });
+  }
+
+  // Swap image with fade
+  function goTo(index, manual = false) {
+    if (!nftShowcaseImg) return;
+    nftShowcaseImg.classList.add('fading');
+
+    setTimeout(() => {
+      nftIndex = ((index % nftImages.length) + nftImages.length) % nftImages.length;
+      nftShowcaseImg.src = nftImages[nftIndex];
+      updateDots();
+
+      const onLoad = () => {
+        nftShowcaseImg.classList.remove('fading');
+        nftShowcaseImg.removeEventListener('load', onLoad);
+      };
+      nftShowcaseImg.addEventListener('load', onLoad);
+      if (nftShowcaseImg.complete) nftShowcaseImg.classList.remove('fading');
+    }, 400);
+
+    // Reset auto-cycle on manual interaction
+    if (manual) resetAutoCycle();
+  }
+
+  // Auto-cycle every 3.5s
+  function startAutoCycle() {
+    autoCycleTimer = setInterval(() => goTo(nftIndex + 1), 3500);
+  }
+
+  function resetAutoCycle() {
+    clearInterval(autoCycleTimer);
+    startAutoCycle();
+  }
+
+  // Wire up buttons
+  if (nftPrevBtn)    nftPrevBtn.addEventListener('click', () => goTo(nftIndex - 1, true));
+  if (nftNextBtn)    nftNextBtn.addEventListener('click', () => goTo(nftIndex + 1, true));
+  if (nftRandomBtn)  nftRandomBtn.addEventListener('click', () => {
+    let r;
+    do { r = Math.floor(Math.random() * nftImages.length); } while (r === nftIndex);
+    goTo(r, true);
+  });
+  if (nftDownloadBtn) nftDownloadBtn.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = nftImages[nftIndex];
+    a.download = nftImages[nftIndex].split('/').pop();
+    a.click();
+  });
+
+  buildDots();
+  startAutoCycle();
+
 });
 
